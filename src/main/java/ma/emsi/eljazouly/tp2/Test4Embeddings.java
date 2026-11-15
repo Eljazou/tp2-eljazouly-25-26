@@ -2,7 +2,9 @@ package ma.emsi.eljazouly.tp2;
 
 import dev.langchain4j.data.embedding.Embedding;
 import dev.langchain4j.model.embedding.EmbeddingModel;
-import dev.langchain4j.model.embedding.onnx.bgesmallenv15.BgeSmallEnV15EmbeddingModel;
+// Dépendance langchain4j-embeddings-bge-small-en-v15 mise en commentaire dans pom.xml (test 5) :
+// import dev.langchain4j.model.embedding.onnx.bgesmallenv15.BgeSmallEnV15EmbeddingModel;
+import dev.langchain4j.model.embedding.onnx.bgesmallenv15q.BgeSmallEnV15QuantizedEmbeddingModel;
 import dev.langchain4j.model.google.genai.GoogleGenAiEmbeddingModel;
 import dev.langchain4j.store.embedding.CosineSimilarity;
 
@@ -35,7 +37,9 @@ public class Test4Embeddings {
         }
 
         // Modèle d'embeddings intégré à LangChain4j (ne coûte rien en tokens)
-        EmbeddingModel modeleIntegre = new BgeSmallEnV15EmbeddingModel();
+        // EmbeddingModel modeleIntegre = new BgeSmallEnV15EmbeddingModel();
+        // Depuis le test 5, version quantifiée du même modèle, fournie par la dépendance easy-rag.
+        EmbeddingModel modeleIntegre = new BgeSmallEnV15QuantizedEmbeddingModel();
 
         // Modèle d'embeddings externe de Google
         EmbeddingModel modeleGoogle = GoogleGenAiEmbeddingModel.builder()
@@ -49,7 +53,7 @@ public class Test4Embeddings {
         for (String[] couple : COUPLES) {
             System.out.println("Phrase 1 : " + couple[0]);
             System.out.println("Phrase 2 : " + couple[1]);
-            System.out.printf("  Similarité (BgeSmallEnV15, intégré) : %.4f%n", similarite(modeleIntegre, couple));
+            System.out.printf("  Similarité (BgeSmallEnV15Q, intégré): %.4f%n", similarite(modeleIntegre, couple));
             System.out.printf("  Similarité (gemini-embedding-001)   : %.4f%n", similarite(modeleGoogle, couple));
             System.out.println("--------------------------------------------------");
         }

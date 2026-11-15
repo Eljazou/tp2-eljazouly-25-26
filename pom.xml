@@ -31,10 +31,19 @@
             <artifactId>langchain4j-google-genai</artifactId>
             <version>${langchain4j.beta.version}</version>
         </dependency>
-        <!-- Modele d'embeddings integre (test 4) -->
+        <!-- Modele d'embeddings integre (test 4), mis en commentaire pour eviter un conflit
+             avec le modele d'embeddings utilise par easy-rag -->
+        <!--
         <dependency>
             <groupId>dev.langchain4j</groupId>
             <artifactId>langchain4j-embeddings-bge-small-en-v15</artifactId>
+            <version>${langchain4j.beta.version}</version>
+        </dependency>
+        -->
+        <!-- RAG facile (tests 5 et 6) -->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-easy-rag</artifactId>
             <version>${langchain4j.beta.version}</version>
         </dependency>
         <!-- Implementation concrete de SLF4J pour le logging -->

@@ -31,6 +31,12 @@
             <artifactId>langchain4j-google-genai</artifactId>
             <version>${langchain4j.beta.version}</version>
         </dependency>
+        <!-- Modele d'embeddings integre (test 4) -->
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-embeddings-bge-small-en-v15</artifactId>
+            <version>${langchain4j.beta.version}</version>
+        </dependency>
         <!-- Implementation concrete de SLF4J pour le logging -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
